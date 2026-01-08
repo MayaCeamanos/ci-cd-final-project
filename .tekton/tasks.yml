@@ -69,9 +69,9 @@ spec:
       description: Arguments to pass to flake8
       type: array
       default:
-        - "--count"
-        - "--max-complexity=10"
-        - "--max-line-length=127"
+        - --count
+        - --max-complexity=10
+        - --max-line-length=127
   steps:
     - name: flake8
       image: python:3.9-slim
@@ -81,4 +81,4 @@ spec:
         set -e
         python -m pip install --upgrade pip wheel
         pip install -r requirements.txt
-        flake8 service $(params.args)
+        flake8 service $(params.args[*])
